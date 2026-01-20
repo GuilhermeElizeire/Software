@@ -2,12 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' http://*.local http://*; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'">
-    <title>Chavi</title>
+    <title>Chavi Fleet Control</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="header">
         <h1>🛰️ Chavi</h1>
         <div class="header-actions">
@@ -18,18 +16,18 @@
 
     <div class="actions-bar">
         <div class="search-row">
-            <input type="text" id="searchInput" placeholder="Filtrar por nome ou IP cadastrado...">
+            <input type="text" id="searchInput" placeholder="Filtrar por nome ou IP...">
         </div>
         
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+        <div class="controls-row">
+            <label class="checkbox-container">
                 <input type="checkbox" id="selectAll">
                 <strong>Selecionar Todos (Online)</strong>
             </label>
-            <div style="display: flex; gap: 10px;">
+            <div class="button-group">
                 <input type="file" id="massFile" style="display:none" accept=".bin">
-                <button id="btnSelectFW" style="padding: 8px 15px; border-radius: 6px; cursor:pointer;">📁 Selecionar FW</button>
-                <button id="btnMassUpdate" style="background:#1a73e8; color:white; border:none; padding: 8px 15px; border-radius: 6px; cursor:pointer; font-weight:bold;">🚀 Atualizar OTA</button>
+                <button id="btnSelectFW">📁 Selecionar FW</button>
+                <button id="btnMassUpdate" class="btn-primary">🚀 Atualizar OTA</button>
             </div>
         </div>
     </div>

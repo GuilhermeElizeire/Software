@@ -1,0 +1,17 @@
+# Builds Electron
+out/
+dist/
+build/
+
+# Instaladores
+*.dmg
+*.deb
+*.zip
+*.exe
+*.AppImage
+
+# Node
+node_modules/
+
+# Logs
+*.log

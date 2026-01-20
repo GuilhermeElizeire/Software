@@ -38,22 +38,26 @@ function atualizarInterface() {
             card.className = 'card';
             card.style.borderLeft = `6px solid ${isOnline ? '#28a745' : '#ccc'}`;
 
-            card.innerHTML = `
+card.innerHTML = `
                 <div class="card-main">
                     <div style="display:flex; align-items:center; gap:15px;">
                         <input type="checkbox" class="device-checkbox" value="${ip}" ${!isOnline ? 'disabled' : ''}>
                         <div>
-                            <strong>${dev.nome}</strong> 
+                            <strong style="font-size: 16px;">${dev.nome}</strong> 
                             <span class="status-tag ${isOnline ? 'online' : 'offline'}">${isOnline ? 'ONLINE' : 'OFFLINE'}</span>
-                            <div style="font-size: 12px; color: #666; margin-top:4px;">
-                                IP: ${ip} | HW: ${dev.hw || '1.51'} | FW: ${dev.fw || '1.51'}
+                            <div style="font-size: 12px; color: #555; margin-top:4px; font-family: monospace;">
+                                IP: ${ip} <br>
+                                MAC: ${dev.mac || 'Pendente...'}
                             </div>
-                            <button class="btn-del" onclick="remover('${ip}')" style="background:none; border:none; color:red; cursor:pointer; padding:0; font-size:11px;">🗑️ Remover</button>
+                            <div style="font-size: 10px; color: #888; margin-top:2px;">
+                                HW: ${dev.hw || '2.01'} | FW: ${dev.fw || '2.01'}
+                            </div>
+                            <button class="btn-del" onclick="remover('${ip}')" style="background:none; border:none; color:red; cursor:pointer; padding:0; font-size:11px; margin-top:5px;">🗑️ Remover Placa</button>
                         </div>
                     </div>
                     <button id="btn-abrir-${cleanId}" class="btn-primary" 
                         onclick="acionarRele('${ip}', '${cleanId}')" 
-                        ${!isOnline ? 'disabled style="background:#ccc"' : ''}>Abrir</button>
+                        ${!isOnline ? 'disabled style="background:#ccc"' : ''}>Abrir Porta</button>
                 </div>
                 <div id="progress-cont-${cleanId}" class="progress-bar">
                     <div id="progress-fill-${cleanId}" class="progress-fill"></div>

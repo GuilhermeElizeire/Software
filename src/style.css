@@ -1,21 +1,126 @@
-body { font-family: -apple-system, sans-serif; padding: 20px; background: #f0f2f5; }
-.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-.header-actions { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+/* src/style.css */
 
-.actions-bar { background: white; padding: 15px; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-bottom: 3px solid #1a73e8; }
+body { 
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+  padding: 20px; 
+  background: #f0f2f5; 
+  margin: 0;
+}
+
+.header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  margin-bottom: 20px; 
+}
+
+.header-actions { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+  align-items: flex-end; 
+}
+
+.actions-bar { 
+  background: white; 
+  padding: 15px; 
+  border-radius: 12px; 
+  margin-bottom: 20px; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  border-bottom: 3px solid #1a73e8; 
+  position: sticky; /* Mantém a barra visível ao rolar no celular */
+  top: 10px;
+  z-index: 100;
+}
+
 .search-row { margin-bottom: 15px; }
-#searchInput { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box; }
+
+#searchInput { 
+  width: 100%; 
+  padding: 12px; 
+  border-radius: 8px; 
+  border: 1px solid #ddd; 
+  box-sizing: border-box; 
+  font-size: 16px; /* Evita zoom automático no iPhone ao clicar */
+}
+
 .controls-row { display: flex; justify-content: space-between; align-items: center; }
 
-.card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+/* Estilo dos Cards das Placas Chavi */
+.card { 
+  background: white; 
+  border-radius: 12px; 
+  padding: 15px; 
+  margin-bottom: 12px; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+  transition: transform 0.1s;
+}
+
+.card:active { transform: scale(0.98); } /* Feedback de toque no mobile */
+
 .card-main { display: flex; justify-content: space-between; align-items: center; }
-.status-tag { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: bold; }
+
+.status-tag { 
+  font-size: 10px; 
+  padding: 2px 8px; 
+  border-radius: 10px; 
+  font-weight: bold; 
+  text-transform: uppercase;
+}
+
 .online { background: #d4edda; color: #155724; }
 .offline { background: #f8d7da; color: #721c24; }
 
-.progress-bar { width: 100%; background: #eee; height: 8px; margin-top: 10px; display: none; border-radius: 4px; overflow: hidden; }
-.progress-fill { background: #28a745; width: 0%; height: 100%; transition: width 0.3s; }
+/* Barra de Progresso do OTA */
+.progress-bar { 
+  width: 100%; 
+  background: #eee; 
+  height: 8px; 
+  margin-top: 10px; 
+  display: none; 
+  border-radius: 4px; 
+  overflow: hidden; 
+}
+.progress-fill { 
+  background: #28a745; 
+  width: 0%; 
+  height: 100%; 
+  transition: width 0.3s; 
+}
 
-.btn-danger { background: #dc3545; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
-.btn-rescan { background: white; color: #1a73e8; border: 2px solid #1a73e8; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; }
-.btn-primary { background: #1a73e8; color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+/* Botões */
+.btn-primary { 
+  background: #1a73e8; 
+  color: white; 
+  border: none; 
+  padding: 10px 18px; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-weight: bold; 
+}
+
+.btn-rescan { 
+  background: white; 
+  color: #1a73e8; 
+  border: 2px solid #1a73e8; 
+  padding: 8px 15px; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  font-weight: bold; 
+}
+
+.btn-danger { 
+  background: #dc3545; 
+  color: white; 
+  border: none; 
+  padding: 6px 12px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+}
+
+/* Ajustes Dark Mode nativos do Tauri */
+@media (prefers-color-scheme: dark) {
+  body { background: #1a1a1a; color: white; }
+  .card, .actions-bar { background: #2d2d2d; color: white; }
+  #searchInput { background: #3d3d3d; color: white; border-color: #555; }
+}
